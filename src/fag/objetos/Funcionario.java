@@ -27,10 +27,17 @@ public class Funcionario {
 	}
 	
 	public void adicionarConstrucao(Construcao c) {
-		if (!construcoes.contains(c)) {
-			construcoes.add(c);
-			c.adicionarFuncionario(this);
-		}
+	    if(!this.construcoes.contains(c)) {
+	        this.construcoes.add(c);
+	        c.adicionarFuncionario(this);
+	    }
+	}
+	
+	public void removerConstrucao(Construcao c) {
+	    if (this.construcoes.contains(c)) {
+	        this.construcoes.remove(c);
+	        c.getFuncionarios().remove(this);
+	    }
 	}
 	
 	//GettersInicio-----------------------------------------------------------------//

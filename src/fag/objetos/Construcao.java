@@ -27,12 +27,19 @@ public class Construcao {
 	}
 	
 	public void adicionarFuncionario(Funcionario f) {
-		if (!funcionarios.contains(f)) {
-			funcionarios.add(f);
-			f.adicionarConstrucao(this);
-		}
+	    if(!this.funcionarios.contains(f)) {
+	        this.funcionarios.add(f);
+	        f.adicionarConstrucao(this);
+	    }
 	}
 
+	public void removerFuncionario(Funcionario f) {
+	    if (this.funcionarios.contains(f)) {
+	        this.funcionarios.remove(f);
+	        f.getConstrucoes().remove(this);
+	    }
+	}
+	
 	//GettersInicio-----------------------------------------------------------------//
 	
 	public String getNome() {
@@ -83,7 +90,7 @@ public class Construcao {
 		} else {
 			System.out.printf(" - Funcionários:\n");
 			for (int i=0;i < funcionarios.size();i++) {
-				System.out.printf("  - %s\n", funcionarios.get(i).getNome());
+				System.out.printf("  - %s, %s\n", funcionarios.get(i).getNome(),funcionarios.get(i).getCargo());
 			}
 			System.out.printf("\n");
 		}
